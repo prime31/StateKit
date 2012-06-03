@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class UITester : MonoBehaviour
 {
 	private SKStateMachine<SomeClass> _machine;

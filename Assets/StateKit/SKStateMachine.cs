@@ -28,7 +28,7 @@ public class SKStateMachine<T>
 		if( _states.ContainsKey( type ) )
 			return _states[type];
 		
-		var state = Activator.CreateInstance( type, this ) as SKState<T>;
+		var state = Activator.CreateInstance( type ) as SKState<T>;
 		_states.Add( type, state );
 		
 		return state;

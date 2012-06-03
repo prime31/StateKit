@@ -5,11 +5,6 @@ using System.Collections.Generic;
 
 public class ChasingState : SKState<SomeClass>
 {
-	// all states must implement a constructor that takes in the state machine that will be running the show
-	public ChasingState( SKStateMachine<SomeClass> machine ) : base( machine )
-	{}
-
-	
 	public override void begin()
 	{
 		Debug.Log( "started chasing" );
