@@ -19,6 +19,7 @@ public class SKStateMachine<T>
 		this.context = context;
 		
 		// setup our initial state
+		initialState.setMachine( this );
 		_states[initialState.GetType()] = initialState;
 		_currentState = initialState;
 		_currentState.begin();
@@ -41,6 +42,7 @@ public class SKStateMachine<T>
 			return _states[type];
 		
 		var state = Activator.CreateInstance( type ) as SKState<T>;
+		state.setMachine( this );
 		_states.Add( type, state );
 		
 		return state;
