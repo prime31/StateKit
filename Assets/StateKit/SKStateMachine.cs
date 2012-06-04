@@ -51,6 +51,7 @@ public class SKStateMachine<T>
 	
 	public void update( float deltaTime )
 	{
+		_currentState.reason();
 		_currentState.update( deltaTime );
 	}
 	

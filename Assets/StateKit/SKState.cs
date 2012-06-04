@@ -15,6 +15,9 @@ public abstract class SKState<T>
 
 
 	public abstract void begin();
+
+	public virtual void reason()
+	{}
 	
 	public abstract void update( float deltaTime );
 	
