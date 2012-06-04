@@ -13,7 +13,10 @@ public class UITester : MonoBehaviour
 		var someClass = new SomeClass();
 		
 		// the initial state has to be passed to the constructor
-		_machine = new SKStateMachine<SomeClass>( someClass, typeof( PatrollingState ) );
+		_machine = new SKStateMachine<SomeClass>( someClass, new PatrollingState() );
+		
+		// another option is to pass the type of the initial state to the constructor
+		//_machine = new SKStateMachine<SomeClass>( someClass, typeof( PatrollingState ) );
 	}
 	
 	

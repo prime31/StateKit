@@ -12,6 +12,18 @@ public class SKStateMachine<T>
 	private SKState<T> _previousState;
 	private Dictionary<System.Type, SKState<T>> _states = new Dictionary<System.Type, SKState<T>>();
 	
+
+	
+	public SKStateMachine( T context, SKState<T> initialState )
+	{
+		this.context = context;
+		
+		// setup our initial state
+		_states[initialState.GetType()] = initialState;
+		_currentState = initialState;
+		_currentState.begin();
+	}
+	
 	
 	public SKStateMachine( T context, System.Type initialState )
 	{

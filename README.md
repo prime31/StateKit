@@ -11,6 +11,9 @@ Simple usage example:
     // create a state machine that will work with an object of type SomeClass as the focus with an initial state of PatrollingState
     var machine = new SKStateMachine<SomeClass>( someClass, typeof( PatrollingState ) );
 	
+	// another option for the state machine constructor is to pass an instance of the initial state
+	var machine = new SKStateMachine<SomeClass>( someClass, new PatrollingState() );
+	
 	// updates the state machine
 	machine.update( Time.deltaTime );
 	
