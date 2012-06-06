@@ -7,11 +7,13 @@ using System.Collections.Generic;
 public class SKStateMachine<T>
 {
 	public T context;
+	public event Action<SKStateMachine<T>> onStateChanged;
 	
-	private SKState<T> _currentState;
-	private SKState<T> _previousState;
 	private Dictionary<System.Type, SKState<T>> _states = new Dictionary<System.Type, SKState<T>>();
-	
+	private SKState<T> _currentState;
+	public SKState<T> currentState { get { return _currentState; } }
+	private SKState<T> _previousState;
+	public SKState<T> previousState { get { return _previousState; } }
 
 	
 	public SKStateMachine( T context, SKState<T> initialState )
@@ -71,6 +73,10 @@ public class SKStateMachine<T>
 		_previousState = _currentState;
 		_currentState = getOrCreate( newType );
 		_currentState.begin();
+		
+		// fire the changed event if we have a listener
+		if( onStateChanged != null )
+			onStateChanged( this );
 	}
 	
 	
