@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class SKStateMachine<T>
 {
 	public T context;
-	public event Action<SKStateMachine<T>> onStateChanged;
+	public event Action onStateChanged;
 	
 	private Dictionary<System.Type, SKState<T>> _states = new Dictionary<System.Type, SKState<T>>();
 	private SKState<T> _currentState;
@@ -76,7 +76,7 @@ public class SKStateMachine<T>
 		
 		// fire the changed event if we have a listener
 		if( onStateChanged != null )
-			onStateChanged( this );
+			onStateChanged();
 	}
 	
 	
