@@ -7,7 +7,9 @@ using System.Collections.Generic;
 public class SKStateMachine<T>
 {
 	public T context;
+	#pragma warning disable 67
 	public event Action onStateChanged;
+	#pragma warning restore 67
 	
 	private Dictionary<System.Type, SKState<T>> _states = new Dictionary<System.Type, SKState<T>>();
 	private SKState<T> _currentState;
@@ -60,11 +62,8 @@ public class SKStateMachine<T>
 	
 	public void changeState<R>() where R : SKState<T>
 	{
-		// avoid changing to the same state
 		var newType = typeof( R );
-		if( _currentState.GetType() == newType )
-			return;
-		
+
 		// only call end if we have a currentState
 		if( _currentState != null )
 			_currentState.end();
