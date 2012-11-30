@@ -12,8 +12,8 @@ Simple usage example:
 	// another option for the state machine constructor is to pass an instance of the initial state
 	var machine = new SKStateMachine<SomeClass>( someClass, new PatrollingState() );
 	
-	// first allows the current state to check constraints and change state if desired then updates the state machine
-	// these two method would typically be called in an Update/FixedUpdate of an object
+	// reason allows the current state to check constraints and change state if desired then updates the state machine
+	// these two methods would typically be called in an Update/FixedUpdate of an object
 	machine.reason();
 	machine.update( Time.deltaTime );
 	
