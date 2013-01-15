@@ -7,7 +7,9 @@ using System.Collections.Generic;
 public class SKStateMachine<T>
 {
 	public T context;
+	#pragma warning disable
 	public event Action onStateChanged;
+	#pragma warning restore
 	
 	private Dictionary<System.Type, SKState<T>> _states = new Dictionary<System.Type, SKState<T>>();
 	private SKState<T> _currentState;
