@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class SKStateMachine<T>
 {
-	public T context;
+	private T _context;
 	#pragma warning disable
 	public event Action onStateChanged;
 	#pragma warning restore
@@ -20,10 +20,10 @@ public class SKStateMachine<T>
 	
 	public SKStateMachine( T context, SKState<T> initialState )
 	{
-		this.context = context;
+		this._context = context;
 		
 		// setup our initial state
-		initialState.setMachine( this );
+		initialState.setMachineAndContext( this, context );
 		_states[initialState.GetType()] = initialState;
 		_currentState = initialState;
 		_currentState.begin();
@@ -32,7 +32,7 @@ public class SKStateMachine<T>
 	
 	public SKStateMachine( T context, System.Type initialState )
 	{
-		this.context = context;
+		this._context = context;
 		
 		// setup our initial state
 		_currentState = getOrCreate( initialState );
@@ -46,7 +46,7 @@ public class SKStateMachine<T>
 			return _states[type];
 		
 		var state = Activator.CreateInstance( type ) as SKState<T>;
-		state.setMachine( this );
+		state.setMachineAndContext( this, _context );
 		_states.Add( type, state );
 		
 		return state;
