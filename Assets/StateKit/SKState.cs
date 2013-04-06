@@ -6,21 +6,28 @@ using System.Collections.Generic;
 public abstract class SKState<T>
 {
 	protected SKStateMachine<T> _machine;
+	protected T _context;
 	
 	
-	public void setMachine( SKStateMachine<T> machine )
+	public void setMachineAndContext( SKStateMachine<T> machine, T context )
 	{
 		_machine = machine;
+		_context = context;
 	}
 
 
-	public abstract void begin();
-
+	public virtual void begin()
+	{}
+	
+	
 	public virtual void reason()
 	{}
 	
+	
 	public abstract void update( float deltaTime );
 	
-	public abstract void end();
+	
+	public virtual void end()
+	{}
 
 }
