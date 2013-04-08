@@ -19,4 +19,6 @@ Simple usage example:
 	
 	// change states. the state machine will automatically create and cache an instance of the class (in this case ChasingState)
 	machine.changeState<ChasingState>();
-	
+
+
+StateKit now has big brother: SKMecanimStateKit. This is a StateKit state machine that is tailored to work with Mecanim. See the demo scene and comments for more info.
