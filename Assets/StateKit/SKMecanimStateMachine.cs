@@ -44,8 +44,7 @@ namespace Prime31.StateKit
 		/// </summary>
 		public void addState( SKMecanimState<T> state )
 		{
-			state.context = _context;
-			state.machine = this;
+			state.setMachineAndContext( this, _context );
 			_states[state.GetType()] = state;
 		}
 	
