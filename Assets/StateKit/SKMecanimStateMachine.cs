@@ -22,7 +22,6 @@ namespace Prime31.StateKit
 		public Animator animator;
 		
 		private Dictionary<System.Type, SKMecanimState<T>> _states = new Dictionary<System.Type, SKMecanimState<T>>();
-		//private Dictionary<int, string> _hashToStateName = new Dictionary<int, string>();
 		
 		
 		/// <summary>
