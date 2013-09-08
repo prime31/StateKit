@@ -34,7 +34,7 @@ namespace Prime31.StateKit
 		}
 		
 		
-		public void setMachineAndContext( SKMecanimStateMachine<T> machine, T context )
+		internal void setMachineAndContext( SKMecanimStateMachine<T> machine, T context )
 		{
 			this.machine = machine;
 			this.context = context;

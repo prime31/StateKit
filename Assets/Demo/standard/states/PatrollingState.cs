@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Prime31.StateKit;
 
 
 public class PatrollingState : SKState<SomeClass>

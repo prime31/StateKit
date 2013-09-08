@@ -10,7 +10,7 @@ namespace Prime31.StateKit
 	/// Mecanim specific StateKit state machine. Note that there are some differences between a normal StateKit state machine:
 	/// - the SKMecanimStateMachine will not create states for you. You must call addState with all of your states before attempting to change to one
 	/// </summary>
-	public class SKMecanimStateMachine<T>
+	public sealed class SKMecanimStateMachine<T>
 	{
 		private T _context;
 		#pragma warning disable
@@ -72,22 +72,23 @@ namespace Prime31.StateKit
 		/// <summary>
 		/// changes the current state
 		/// </summary>
-		public virtual void changeState<R>() where R : SKMecanimState<T>
+		public R changeState<R>() where R : SKMecanimState<T>
 		{
 			// avoid changing to the same state
 			var newType = typeof( R );
 			if( _currentState.GetType() == newType )
-				return;
+				return _currentState as R;
 			
 #if UNITY_EDITOR
 			// do a sanity check while in the editor to ensure we have the given state in our state list
 			if( !_states.ContainsKey( newType ) )
 			{
-				var error = GetType() + ": state " + newType + " does not exists. Did you forget to add it by calling addState?";
+				var error = GetType() + ": state " + newType + " does not exist. Did you forget to add it by calling addState?";
 				Debug.LogError( error );
 				throw new Exception( error );
 			}
 #endif
+			
 			// end the previous state
 			_currentState.end();
 			
@@ -98,6 +99,8 @@ namespace Prime31.StateKit
 			// fire the changed event if we have a listener
 			if( onStateChanged != null )
 				onStateChanged();
+			
+			return _currentState as R;
 		}
 	
 	}

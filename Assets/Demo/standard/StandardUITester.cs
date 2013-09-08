@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Prime31.StateKit;
 
 
 public class StandardUITester : MonoBehaviour
@@ -14,6 +15,7 @@ public class StandardUITester : MonoBehaviour
 		
 		// the initial state has to be passed to the constructor
 		_machine = new SKStateMachine<SomeClass>( someClass, new PatrollingState() );
+		_machine.addState( new ChasingState() );
 	}
 	
 	
