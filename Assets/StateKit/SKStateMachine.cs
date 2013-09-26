@@ -66,7 +66,7 @@ namespace Prime31.StateKit
 			if( _currentState != null )
 				_currentState.end();
 			
-	#if UNITY_EDITOR
+#if UNITY_EDITOR
 				// do a sanity check while in the editor to ensure we have the given state in our state list
 				if( !_states.ContainsKey( newType ) )
 				{
@@ -74,7 +74,7 @@ namespace Prime31.StateKit
 					Debug.LogError( error );
 					throw new Exception( error );
 				}
-	#endif
+#endif
 			
 			// swap states and call begin
 			_currentState = _states[newType];
