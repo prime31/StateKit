@@ -19,7 +19,7 @@ namespace Prime31.StateKit
 
 		/// <summary>
 		/// constructor that takes the mecanim state name as a string
-		/// </SKMecanimState>
+		/// </summary>
 		public SKState( string mecanimStateName ) : this( Animator.StringToHash( mecanimStateName ) )
 		{}
 		
