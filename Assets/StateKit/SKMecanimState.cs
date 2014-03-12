@@ -7,9 +7,9 @@ namespace Prime31.StateKit
 {
 	public abstract class SKMecanimState<T>
 	{
-		public int mecanimStateHash;
-		protected SKMecanimStateMachine<T> machine;
-		protected T context;
+		internal int mecanimStateHash;
+		protected SKMecanimStateMachine<T> _machine;
+		protected T _context;
 	
 		
 		public SKMecanimState()
@@ -36,8 +36,8 @@ namespace Prime31.StateKit
 		
 		internal void setMachineAndContext( SKMecanimStateMachine<T> machine, T context )
 		{
-			this.machine = machine;
-			this.context = context;
+			this._machine = machine;
+			this._context = context;
 		}
 
 	

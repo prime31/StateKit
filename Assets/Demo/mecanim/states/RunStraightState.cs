@@ -13,9 +13,9 @@ public class RunStraightState : SKMecanimState<MecanimPlayerController>
 	{
 		// simple reasoning for demonstrations purposes. pressing right swaps to the RunRightState, pressing left goes to the RunLeftState
 		if( Input.GetKey( KeyCode.RightArrow ) )
-			machine.changeState<RunRightState>();
+			_machine.changeState<RunRightState>();
 		else if( Input.GetKey( KeyCode.LeftArrow ) )
-			machine.changeState<RunLeftState>();
+			_machine.changeState<RunLeftState>();
 	}
 
 	

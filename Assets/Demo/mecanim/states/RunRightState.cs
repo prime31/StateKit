@@ -18,8 +18,8 @@ public class RunRightState : SKMecanimState<MecanimPlayerController>
 	public override void begin()
 	{
 		// set the mecanim parameter so we start running right
-		machine.animator.SetBool( _goRightParam, true );
-		machine.animator.applyRootMotion = true;
+		_machine.animator.SetBool( _goRightParam, true );
+		_machine.animator.applyRootMotion = true;
 	}
 	
 	
@@ -27,7 +27,7 @@ public class RunRightState : SKMecanimState<MecanimPlayerController>
 	{
 		// decide if we should change state based on input
 		if( !Input.GetKey( KeyCode.RightArrow ) )
-			machine.changeState<RunStraightState>();
+			_machine.changeState<RunStraightState>();
 	}
 	
 	
@@ -40,8 +40,8 @@ public class RunRightState : SKMecanimState<MecanimPlayerController>
 	public override void end()
 	{
 		// clean up the mecanim state here
-		machine.animator.SetBool( _goRightParam, false );
-		machine.animator.applyRootMotion = false;
+		_machine.animator.SetBool( _goRightParam, false );
+		_machine.animator.applyRootMotion = false;
 	}
 
 }

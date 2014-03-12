@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-
 namespace Prime31.StateKit
 {
 	public abstract class SKState<T>

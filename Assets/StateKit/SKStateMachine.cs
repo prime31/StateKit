@@ -25,8 +25,7 @@ namespace Prime31.StateKit
 			this._context = context;
 	
 			// setup our initial state
-			initialState.setMachineAndContext( this, context );
-			_states[initialState.GetType()] = initialState;
+			addState( initialState );
 			_currentState = initialState;
 			_currentState.begin();
 		}
@@ -37,8 +36,8 @@ namespace Prime31.StateKit
 		/// </summary>
 		public void addState( SKState<T> state )
 		{
-			_states[state.GetType()] = state;
 			state.setMachineAndContext( this, _context );
+			_states[state.GetType()] = state;
 		}
 	
 		
@@ -55,7 +54,7 @@ namespace Prime31.StateKit
 		/// <summary>
 		/// changes the current state
 		/// </summary>
-		public R changeState<R>() where R : SKState<T>
+		public R changeState<R>() where R : SKState<T>    
 		{
 			// avoid changing to the same state
 			var newType = typeof( R );
