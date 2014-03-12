@@ -20,7 +20,7 @@ namespace Prime31.StateKit
 		/// constructor that takes the mecanim state name as a string. Note that if a mecanimStateName is passed into the constructor
 		/// the reason and update methods will not be called until Mecanim finishes any transitions and is completely in the mecanim state.
 		/// Do not pass in a mecanim state name if you do not want that behaviour.
-		/// </SKMecanimState>
+		/// </summary>
 		public SKMecanimState( string mecanimStateName ) : this( Animator.StringToHash( mecanimStateName ) )
 		{}
 		
