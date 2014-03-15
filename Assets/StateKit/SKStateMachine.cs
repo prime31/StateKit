@@ -54,7 +54,7 @@ namespace Prime31.StateKit
 		/// <summary>
 		/// changes the current state
 		/// </summary>
-		public R changeState<R>() where R : SKState<T>    
+		public R changeState<R>() where R : SKState<T>
 		{
 			// avoid changing to the same state
 			var newType = typeof( R );
