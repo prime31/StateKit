@@ -38,7 +38,15 @@ namespace Prime31.StateKit
 		{
 			this._machine = machine;
 			this._context = context;
+			onInitialized();
 		}
+
+
+		/// <summary>
+		/// called directly after the machine and context are set allowing the state to do any required setup
+		/// </summary>
+		public virtual void onInitialized()
+		{}
 
 	
 		public virtual void begin()
