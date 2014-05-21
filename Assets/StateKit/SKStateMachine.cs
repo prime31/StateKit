@@ -12,25 +12,26 @@ namespace Prime31.StateKit
 		#pragma warning disable
 		public event Action onStateChanged;
 		#pragma warning restore
-	
+
 		public SKState<T> currentState { get { return _currentState; } }
-	
-	
+		public SKState<T> previousState;
+
+
 		private Dictionary<System.Type, SKState<T>> _states = new Dictionary<System.Type, SKState<T>>();
 		private SKState<T> _currentState;
-	
-	
+
+
 		public SKStateMachine( T context, SKState<T> initialState )
 		{
 			this._context = context;
-	
+
 			// setup our initial state
 			addState( initialState );
 			_currentState = initialState;
 			_currentState.begin();
 		}
-	
-	
+
+
 		/// <summary>
 		/// adds the state to the machine
 		/// </summary>
@@ -39,8 +40,8 @@ namespace Prime31.StateKit
 			state.setMachineAndContext( this, _context );
 			_states[state.GetType()] = state;
 		}
-	
-		
+
+
 		/// <summary>
 		/// ticks the state machine with the provided delta time
 		/// </summary>
@@ -49,8 +50,8 @@ namespace Prime31.StateKit
 			_currentState.reason();
 			_currentState.update( deltaTime );
 		}
-	
-	
+
+
 		/// <summary>
 		/// changes the current state
 		/// </summary>
@@ -60,11 +61,11 @@ namespace Prime31.StateKit
 			var newType = typeof( R );
 			if( _currentState.GetType() == newType )
 				return _currentState as R;
-	
+
 			// only call end if we have a currentState
 			if( _currentState != null )
 				_currentState.end();
-			
+
 #if UNITY_EDITOR
 				// do a sanity check while in the editor to ensure we have the given state in our state list
 				if( !_states.ContainsKey( newType ) )
@@ -74,17 +75,18 @@ namespace Prime31.StateKit
 					throw new Exception( error );
 				}
 #endif
-			
+
 			// swap states and call begin
+			previousState = _currentState;
 			_currentState = _states[newType];
 			_currentState.begin();
-	
+
 			// fire the changed event if we have a listener
 			if( onStateChanged != null )
 				onStateChanged();
-			
+
 			return _currentState as R;
 		}
-	
+
 	}
 }
