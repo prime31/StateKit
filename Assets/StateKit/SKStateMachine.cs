@@ -47,7 +47,6 @@ namespace Prime31.StateKit
 		/// </summary>
 		public void update( float deltaTime )
 		{
-			_currentState._elapsedTimeInState += deltaTime;
 			_currentState.reason();
 			_currentState.update( deltaTime );
 		}
@@ -80,7 +79,6 @@ namespace Prime31.StateKit
 			// swap states and call begin
 			previousState = _currentState;
 			_currentState = _states[newType];
-			_currentState._elapsedTimeInState = 0f;
 			_currentState.begin();
 
 			// fire the changed event if we have a listener

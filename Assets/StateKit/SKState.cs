@@ -10,9 +10,8 @@ namespace Prime31.StateKit
 		protected int _mecanimStateHash;
 		protected SKStateMachine<T> _machine;
 		protected T _context;
-		internal float _elapsedTimeInState;
-
-
+		
+		
 		public SKState()
 		{}
 
@@ -22,8 +21,8 @@ namespace Prime31.StateKit
 		/// </summary>
 		public SKState( string mecanimStateName ) : this( Animator.StringToHash( mecanimStateName ) )
 		{}
-
-
+		
+		
 		/// <summary>
 		/// constructor that takes the mecanim state hash
 		/// </summary>
@@ -32,7 +31,7 @@ namespace Prime31.StateKit
 			_mecanimStateHash = mecanimStateHash;
 		}
 
-
+		
 		internal void setMachineAndContext( SKStateMachine<T> machine, T context )
 		{
 			_machine = machine;
@@ -50,17 +49,17 @@ namespace Prime31.StateKit
 
 		public virtual void begin()
 		{}
-
-
+		
+		
 		public virtual void reason()
 		{}
-
-
+		
+		
 		public abstract void update( float deltaTime );
-
-
+		
+		
 		public virtual void end()
 		{}
-
+	
 	}
 }
