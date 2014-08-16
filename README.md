@@ -22,3 +22,9 @@ Simple usage example:
 
 
 StateKit now has big brother: SKMecanimStateKit. This is a StateKit state machine that is tailored to work with Mecanim. See the demo scene and comments for more info.
+
+
+License
+-----
+
+[Attribution-NonCommercial-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode) with [simple explanation](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US). You are free to use StateKit in any and all games that you make. You cannot sell StateKit directly or as part of a larger game asset.
