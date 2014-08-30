@@ -10,12 +10,12 @@ namespace Prime31.StateKit
 		internal int mecanimStateHash;
 		protected SKMecanimStateMachine<T> _machine;
 		protected T _context;
-	
-		
+
+
 		public SKMecanimState()
 		{}
 
-	
+
 		/// <summary>
 		/// constructor that takes the mecanim state name as a string. Note that if a mecanimStateName is passed into the constructor
 		/// the reason and update methods will not be called until Mecanim finishes any transitions and is completely in the mecanim state.
@@ -23,8 +23,8 @@ namespace Prime31.StateKit
 		/// </summary>
 		public SKMecanimState( string mecanimStateName ) : this( Animator.StringToHash( mecanimStateName ) )
 		{}
-		
-		
+
+
 		/// <summary>
 		/// constructor that takes the mecanim state hash
 		/// </summary>
@@ -32,12 +32,12 @@ namespace Prime31.StateKit
 		{
 			this.mecanimStateHash = mecanimStateHash;
 		}
-		
-		
+
+
 		internal void setMachineAndContext( SKMecanimStateMachine<T> machine, T context )
 		{
-			this._machine = machine;
-			this._context = context;
+			_machine = machine;
+			_context = context;
 			onInitialized();
 		}
 
@@ -48,20 +48,20 @@ namespace Prime31.StateKit
 		public virtual void onInitialized()
 		{}
 
-	
+
 		public virtual void begin()
 		{}
-		
-		
+
+
 		public virtual void reason()
 		{}
-		
-		
+
+
 		public abstract void update( float deltaTime, AnimatorStateInfo stateInfo );
-		
-		
+
+
 		public virtual void end()
 		{}
-	
+
 	}
 }

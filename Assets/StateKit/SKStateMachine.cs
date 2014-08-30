@@ -15,6 +15,7 @@ namespace Prime31.StateKit
 
 		public SKState<T> currentState { get { return _currentState; } }
 		public SKState<T> previousState;
+		public float elapsedTimeInState = 0f;
 
 
 		private Dictionary<System.Type, SKState<T>> _states = new Dictionary<System.Type, SKState<T>>();
@@ -47,6 +48,7 @@ namespace Prime31.StateKit
 		/// </summary>
 		public void update( float deltaTime )
 		{
+			elapsedTimeInState += deltaTime;
 			_currentState.reason();
 			_currentState.update( deltaTime );
 		}
@@ -66,20 +68,21 @@ namespace Prime31.StateKit
 			if( _currentState != null )
 				_currentState.end();
 
-#if UNITY_EDITOR
-				// do a sanity check while in the editor to ensure we have the given state in our state list
-				if( !_states.ContainsKey( newType ) )
-				{
-					var error = GetType() + ": state " + newType + " does not exist. Did you forget to add it by calling addState?";
-					Debug.LogError( error );
-					throw new Exception( error );
-				}
-#endif
+			#if UNITY_EDITOR
+			// do a sanity check while in the editor to ensure we have the given state in our state list
+			if( !_states.ContainsKey( newType ) )
+			{
+				var error = GetType() + ": state " + newType + " does not exist. Did you forget to add it by calling addState?";
+				Debug.LogError( error );
+				throw new Exception( error );
+			}
+			#endif
 
 			// swap states and call begin
 			previousState = _currentState;
 			_currentState = _states[newType];
 			_currentState.begin();
+			elapsedTimeInState = 0f;
 
 			// fire the changed event if we have a listener
 			if( onStateChanged != null )
