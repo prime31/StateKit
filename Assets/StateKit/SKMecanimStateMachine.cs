@@ -8,7 +8,7 @@ namespace Prime31.StateKit
 {
 	/// <summary>
 	/// Mecanim specific StateKit state machine. Note that there are some differences between a normal StateKit state machine:
-	/// - the SKMecanimStateMachine will not call a states update method until Mecanim fully transactions into that state
+	/// - the SKMecanimStateMachine will not call a states update method until Mecanim fully transitions into that state
 	/// </summary>
 	public sealed class SKMecanimStateMachine<T>
 	{

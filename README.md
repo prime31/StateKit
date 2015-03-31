@@ -24,6 +24,43 @@ Simple usage example:
 StateKit now has big brother: SKMecanimStateKit. This is a StateKit state machine that is tailored to work with Mecanim. See the demo scene and comments for more info.
 
 
+
+StateKitLite
+====
+
+StateKitLite is an even simpler, single class FSM. To use StateKitLite, you just subclass the StateKitLite class and provide an enum to satifsy the generic constraint (for example `class YourClass : StateKitLite<SomeEnum>`). The enum is then used to control the state machine. The naming conventions for the methods are best shown with an example. See below:
+
+    enum SomeEnum
+    {
+    	Walking,
+    	Idle
+    }
+
+    public class YourClass : StateKitLite<SomeEnum>()
+    {
+    	void Start()
+    	{
+    		initialState = SomeEnum.Idle;
+    	}
+
+    	void Walking_Enter() {}
+    	void Walking_Tick() {}
+    	void Walking_Exit() {}
+
+    	void Idle_Enter() {}
+    	void Idle_Tick() {}
+    	void Walking_Exit() {}
+    }
+
+
+All state methods are optional. StateKitLite will cache the methods that you implemented at startup. You can change states at any time by setting the currentState property (for example `currentState = SomeEnum.Walking`). There are a few simple rules that you must follow in your subclass to make sure StateKitLite can function:
+
+- if you implement Awake in your subclass you must call base.Awake()
+- in either Awake or Start the initialState must be set
+- if you implement Update in your subclass you must call base.Update()
+
+
+
 License
 -----
 
