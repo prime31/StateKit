@@ -71,7 +71,7 @@ public class StateKitLite<TEnum> : MonoBehaviour where TEnum : struct, IConverti
 	{
 		if( !typeof( TEnum ).IsEnum )
 		{
-			Debug.LogError( "[StateKitLite] TEnum generic contraint failed! You must use an enum when declaring your subclass!" );
+			Debug.LogError( "[StateKitLite] TEnum generic contsraint failed! You must use an enum when declaring your subclass!" );
 			enabled = false;
 		}
 
