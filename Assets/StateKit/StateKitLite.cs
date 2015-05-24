@@ -82,7 +82,7 @@ public class StateKitLite<TEnum> : MonoBehaviour where TEnum : struct, IConverti
 	}
 
 
-	protected virtual void Update()
+	void Update()
 	{
 		elapsedTimeInState += Time.deltaTime;
 
