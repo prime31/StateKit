@@ -8,9 +8,6 @@ Simple usage example:
 
 ``` csharp
 // create a state machine that will work with an object of type SomeClass as the focus with an initial state of PatrollingState
-var machine = new SKStateMachine<SomeClass>( someClass, typeof( PatrollingState ) );
-
-// another option for the state machine constructor is to pass an instance of the initial state
 var machine = new SKStateMachine<SomeClass>( someClass, new PatrollingState() );
 
 // we can now add any additional states
