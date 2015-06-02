@@ -13,7 +13,12 @@ var machine = new SKStateMachine<SomeClass>( someClass, typeof( PatrollingState 
 // another option for the state machine constructor is to pass an instance of the initial state
 var machine = new SKStateMachine<SomeClass>( someClass, new PatrollingState() );
 
-// reason allows the current state to check constraints and change state if desired then updates the state machine
+// we can now add any additional states
+_machine.addState( new AttackState() );
+_machine.addState( new ChaseState() );
+
+
+// reason (which is optional) allows the current state to check constraints and change state if desired then updates the state machine
 // these two methods would typically be called in an Update/FixedUpdate of an object
 machine.reason();
 machine.update( Time.deltaTime );
