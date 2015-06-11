@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using Prime31.StateKit;
+using Prime31.StateKitLite;
 
 
 
