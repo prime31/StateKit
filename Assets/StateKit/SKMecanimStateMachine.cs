@@ -57,7 +57,7 @@ namespace Prime31.StateKit
 			var currentStateInfo = animator.GetCurrentAnimatorStateInfo( 0 );
 
 			// only call the states update method if we are in that state or if it's mecanimStateHash is 0 meaning it doesn't want us to limit the calls
-			if( _currentState.mecanimStateHash == 0 || currentStateInfo.nameHash == _currentState.mecanimStateHash )
+			if( _currentState.mecanimStateHash == 0 || currentStateInfo.fullPathHash == _currentState.mecanimStateHash )
 			{
 				var tempState = _currentState;
 				_currentState.reason();
