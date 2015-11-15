@@ -16,6 +16,7 @@ namespace Prime31.StateKit
 		public SKState<T> currentState { get { return _currentState; } }
 		public SKState<T> previousState;
 		public float elapsedTimeInState = 0f;
+    public float elapsedTimeInStateFromFixedUpdate = 0f;
 
 
 		private Dictionary<System.Type, SKState<T>> _states = new Dictionary<System.Type, SKState<T>>();
@@ -53,6 +54,17 @@ namespace Prime31.StateKit
 			_currentState.update( deltaTime );
 		}
 
+    /// <summary>
+    /// ticks the state machine with the provided fixed delta time
+    /// </summary>
+    public void fixedUpdate( float fixedDeltaTime )
+    {
+        elapsedTimeInStateFromFixedUpdate += fixedDeltaTime;
+        _currentState.fixedReason();
+        _currentState.fixedUpdate( fixedDeltaTime );
+    }
+
+
 
 		/// <summary>
 		/// changes the current state
@@ -83,6 +95,7 @@ namespace Prime31.StateKit
 			_currentState = _states[newType];
 			_currentState.begin();
 			elapsedTimeInState = 0f;
+      elapsedTimeInStateFromFixedUpdate = 0f;
 
 			// fire the changed event if we have a listener
 			if( onStateChanged != null )
