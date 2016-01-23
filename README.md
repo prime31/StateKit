@@ -53,7 +53,7 @@ public class YourClass : StateKitLite<SomeEnum>()
 
 	void Idle_Enter() {}
 	void Idle_Tick() {}
-	void Walking_Exit() {}
+	void Idle_Exit() {}
 }
 ```
 
