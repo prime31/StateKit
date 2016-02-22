@@ -14,9 +14,7 @@ var machine = new SKStateMachine<SomeClass>( someClass, new PatrollingState() );
 _machine.addState( new AttackState() );
 _machine.addState( new ChaseState() );
 
-// reason (which is optional) allows the current state to check constraints and change state if desired then updates the state machine
-// these two methods would typically be called in an Update/FixedUpdate of an object
-machine.reason();
+// this method would typically be called in an Update/FixedUpdate of an object
 machine.update( Time.deltaTime );
 
 // change states. the state machine will automatically create and cache an instance of the class (in this case ChasingState)
