@@ -48,6 +48,7 @@ namespace Prime31.StateKitLite
 				if( _stateMethods.exitState != null )
 					_stateMethods.exitState();
 
+				elapsedTimeInState = 0f;
 				_stateMethods = _stateCache[_currentState];
 
 				if( _stateMethods.enterState != null )
