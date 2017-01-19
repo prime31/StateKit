@@ -1,9 +1,8 @@
-﻿// loosely based on a Unity Gems article
+// loosely based on a Unity Gems article
 
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-
 
 
 namespace Prime31.StateKitLite
@@ -24,8 +23,6 @@ namespace Prime31.StateKitLite
 		}
 
 		StateMethodCache _stateMethods;
-		protected float elapsedTimeInState = 0f;
-		protected TEnum previousState;
 		Dictionary<TEnum,StateMethodCache> _stateCache = new Dictionary<TEnum,StateMethodCache>();
 
 		TEnum _currentState;
@@ -40,8 +37,6 @@ namespace Prime31.StateKitLite
 				if( _currentState.Equals( value ) )
 					return;
 
-				// swap previous/current
-				previousState = _currentState;
 				_currentState = value;
 
 				// exit the state, fetch the next cached state methods then enter that state
@@ -86,8 +81,6 @@ namespace Prime31.StateKitLite
 
 		protected virtual void Update()
 		{
-			elapsedTimeInState += Time.deltaTime;
-
 			if( _stateMethods.tick != null )
 				_stateMethods.tick();
 		}
