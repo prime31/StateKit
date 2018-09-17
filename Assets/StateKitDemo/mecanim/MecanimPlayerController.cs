@@ -40,7 +40,7 @@ public class MecanimPlayerController : MonoBehaviour
 	void OnGUI()
 	{
 		GUI.skin.label.fontSize = 20;
-		GUILayout.Label( "Mecanim Example. It's about 10 lines of code so open the MecanimPlayerController and read it." );
+		GUILayout.Label( "Mecanim Example. It's about 10 lines of code so open the MecanimPlayerController and read it. rootMotion is turned off for running straight so the player doesnt run off a cliff. Press left/right to trigger those state changes." );
 		GUILayout.Space( 20 );
 		GUILayout.Label( "current state: " + _stateMachine.currentState );
 	}
